@@ -1,0 +1,56 @@
+<div class="task"
+     *ngFor="let tier of tiers; let i = index">
+  <ul>
+    <li>
+
+      <div class="task__body">
+        <div class="task__body__tier">
+          <mat-chip-list class="mat-chip-list-stacked"
+                         aria-label="Color selection">
+            <mat-chip color="primary"
+                      selected>
+              Tier - {{ tier.level }}
+            </mat-chip>
+          </mat-chip-list>
+        </div>
+
+        <div class="task__body__title">
+          <p>{{ tier.title }}</p>
+        </div>
+
+        <div class="task__body__actions">
+          <button type="button"
+                  *ngIf="tier.hasAction"
+                  class="task__body__edit"
+                  mat-raised-button
+                  (click)="editTier(i)">
+            <span class="material-icons">
+              edit
+            </span>
+          </button>
+          <button type="button"
+                  *ngIf="tier.hasAction"
+                  class="task__body__create"
+                  mat-raised-button
+                  (click)="createNew(i)">
+            <span class="material-icons">
+              add
+            </span>
+          </button>
+          <button (click)="onDelete(i)"
+                  class="danger task__body__delete">
+            <span class="material-icons">
+              delete
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Sub tier -->
+      <app-tier-comment [tiers]="tier.tiers"
+                        *ngIf="tier.tiers">
+      </app-tier-comment>
+
+    </li>
+  </ul>
+</div>

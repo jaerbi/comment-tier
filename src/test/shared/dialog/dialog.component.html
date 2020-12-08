@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>Create new tier</h1>
+
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Tier</mat-label>
+    <input matInput
+           [(ngModel)]="data.title" />
+  </mat-form-field>
+  <div class="dialog-checkbox">
+    <mat-checkbox [(ngModel)]="data.abstract">
+      Abstract
+    </mat-checkbox>
+    <mat-checkbox [(ngModel)]="data.highValue">
+      High value
+    </mat-checkbox>
+  </div>
+</div>
+
+<div mat-dialog-actions
+     class="dialog__actions">
+  <button mat-button
+          class="cancel"
+          (click)="onCancel()">
+    Cancel
+  </button>
+  <button mat-button
+          class="save"
+          [mat-dialog-close]="data"
+          [disabled]="!data.title">
+    Add
+  </button>
+</div>
